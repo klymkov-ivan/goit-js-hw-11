@@ -1,6 +1,8 @@
 import { getImagesByQuery } from './js/pixabay-api';
 import { createGallery } from './js/render-functions';
 import { clearGallery } from './js/render-functions';
+import { showLoader } from './js/render-functions';
+import { hideLoader } from './js/render-functions';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import './css/styles.css';
@@ -10,7 +12,7 @@ form.addEventListener('submit', handleGallery);
 
 function handleGallery(event) {
   event.preventDefault();
-
+  showLoader();
   const searchQuery = event.target.elements['search-text'].value.trim();
 
   if (!searchQuery) return;
@@ -33,5 +35,6 @@ function handleGallery(event) {
     })
     .catch(error => {
       console.log(error);
-    });
+    })
+    .finally(() => hideLoader());
 }
