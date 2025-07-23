@@ -8,6 +8,7 @@ export function getImagesByQuery(query) {
     orientation: 'horizontal',
     safesearch: true,
     q: query,
+    per_page: '6',
   });
 
   return axios(`${baseURL}${searchParams}`);
