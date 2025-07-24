@@ -11,5 +11,5 @@ export function getImagesByQuery(query) {
     per_page: '6',
   });
 
-  return axios(`${baseURL}${searchParams}`);
+  return axios(`${baseURL}${searchParams}`).then(response => response.data);
 }
